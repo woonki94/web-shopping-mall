@@ -29,6 +29,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!-- spring boot devtools -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
 		<!-- query dsl -->
 		<dependency>
 			<groupId>com.querydsl</groupId>
@@ -42,7 +47,12 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 		</dependency>
-
+		<!--thymeleaf layout dialect-->
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>2.5.1</version>
+		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -67,6 +77,7 @@
 
 	<build>
 		<plugins>
+
 			<!-- query dsl-->
 			<plugin>
 				<groupId>com.mysema.maven</groupId>
@@ -84,6 +95,8 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- -->
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
