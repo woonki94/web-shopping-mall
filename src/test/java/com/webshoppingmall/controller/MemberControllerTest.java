@@ -51,5 +51,17 @@ public class MemberControllerTest {
 
     }
 
+    @Test
+    public void 로그인_실패_테스트() throws Exception {
+        String email = "test@naver.com";
+        String password = "1234";
+        this.createMember(email,password);
+
+        mockMvc.perform(formLogin().userParameter("email")
+                        .loginProcessingUrl("/members/login")
+                        .user(email).password(password+"2"))
+                .andExpect(SecurityMockMvcResultMatchers.unauthenticated());
+
+    }
 
 }
