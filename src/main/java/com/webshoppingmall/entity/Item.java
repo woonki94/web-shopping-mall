@@ -1,6 +1,7 @@
 package com.webshoppingmall.entity;
 
 import com.webshoppingmall.constant.ItemSellStatus;
+import com.webshoppingmall.dto.ItemFormDto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -24,7 +25,7 @@ public class Item extends BaseEntity {
     @Column(nullable = false, length = 50)
     private String itemName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "price")
     private int price;
 
     @Column(nullable = false)
@@ -39,6 +40,14 @@ public class Item extends BaseEntity {
     private LocalDateTime regTime;
 
     private LocalDateTime updateTime;
+
+    public void updateItem(ItemFormDto itemFormDto){
+        this.itemName = itemFormDto.getItemName();
+        this.itemDetail = itemFormDto.getItemDetail();
+        this.itemSellStatus = itemFormDto.getItemSellStatus();
+        this.stockNumber = itemFormDto.getStockNumber();
+        this.price = itemFormDto.getPrice();
+    }
 
 
 }
