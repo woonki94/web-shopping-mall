@@ -3,11 +3,14 @@ package com.webshoppingmall.service;
 
 import com.webshoppingmall.dto.ItemFormDto;
 import com.webshoppingmall.dto.ItemImgDto;
+import com.webshoppingmall.dto.ItemSearchDto;
 import com.webshoppingmall.entity.Item;
 import com.webshoppingmall.entity.ItemImg;
 import com.webshoppingmall.repository.ItemImgRepository;
 import com.webshoppingmall.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -79,6 +82,11 @@ public class ItemService {
             itemImgService.updateItemImg(itemImgIds.get(i), itemImgFileList.get(i));
         }
         return item.getId();
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
+        return itemRepository.getAdminItemPage(itemSearchDto, pageable);
     }
 
 }
